@@ -26,14 +26,26 @@ exports.updateTask = async (req, res) => {
     const { id } = req.params;
     const { title, status } = req.body;
 
-    const pool = await getConnection();
-    await pool.request()
-        .input("id", sql.Int, id)
-        .input("title", sql.VarChar, title)
-        .input("status", sql.VarChar, status)
-        .query("UPDATE Tasks SET title=@title, status=@status WHERE id=@id");
+    try {
+        const pool = await getConnection();
 
-    res.json({ message: "Tarea actualizada" });
+        await pool.request()
+            .input("id", sql.Int, id)
+            .input("title", sql.VarChar, title || "")
+            .input("status", sql.VarChar, status || "")
+            .query(`
+                UPDATE Tasks 
+                SET 
+                    title = COALESCE(@title, title),
+                    status = COALESCE(@status, status)
+                WHERE id = @id
+            `);
+
+        res.json({ message: "Tarea actualizada" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
 };
 
 exports.deleteTask = async (req, res) => {
