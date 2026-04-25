@@ -1,0 +1,78 @@
+/* Reset básico */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f5f7;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Board */
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Columnas */
+.column {
+  background-color: #ebecf0;
+  border-radius: 10px;
+  width: 300px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.column h2 {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+/* Tareas */
+.task {
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Botones */
+button {
+  background-color: #0079bf;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #026aa7;
+}
+
+/* Botón eliminar */
+.delete-btn {
+  background-color: #e74c3c;
+  margin-top: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Input */
+input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
